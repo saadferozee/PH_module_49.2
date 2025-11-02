@@ -1,10 +1,8 @@
-import React, { use } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router';
 import AuthContext from '../Contexts/AuthContext';
 
 const Navbar = () => {
-
-    const {email} = use(AuthContext);
 
     const links = <>
         <NavLink to={'/'}>Home</NavLink>
@@ -14,7 +12,7 @@ const Navbar = () => {
     </>
 
     const handleClick = () => {
-        console.log('button Clicked', email);
+        console.log('button Clicked');
     }
 
     return (
