@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import AuthContext from './AuthContext';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { auth } from '../Firebase/firebase.init';
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
+
+    // get Current user info
+
+    // onAuthStateChanged(auth, (user) => {
+    //     if (user) {
+    //         const uid = user.uid;
+    //         console.log('inside AuthCurrentUser: if', user, uid);
+    //     } else {
+    //         console.log('user is signed out: else',user);
+    //     }
+    // })
+
+    const [user, setUser] = useState(null);
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            setUser(currentUser);
+        })
+        return () => unsubscribe();
+    }, [])
+
 
     const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password);
@@ -14,9 +34,15 @@ const AuthProvider = ({children}) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
+    const logoutUser = () => {
+        return signOut(auth)
+    }
+
     const AuthInfo = {
+        user,
         createUser,
-        signInUser
+        signInUser,
+        logoutUser
     }
 
     return (

@@ -15,6 +15,7 @@ const Login = () => {
         signInUser(email, password)
         .then(credentials => {
             console.log(credentials);
+            e.target.reset();
         })
         .catch(error => {
             console.log(error);
@@ -34,7 +35,7 @@ const Login = () => {
                                 <input type="password" className="input w-full" name='password' placeholder="Password" required />
                                 <div><a className="link link-hover">Forgot password?</a></div>
                                 <button className="btn btn-neutral mt-4">Login</button>
-                                <p>Already have an account ? please <Link to={'/login'} className='text-blue-400 underline'>Login</Link></p>
+                                <p>Already have an account ? please <Link to={'/register'} className='text-blue-400 underline'>Register</Link></p>
                             </fieldset>
                         </form>
                     </div>

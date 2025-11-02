@@ -16,6 +16,7 @@ const Register = () => {
         createUser(email, password)
             .then(credentials => {
                 console.log(name, credentials);
+                e.target.reset();
             })
             .catch(error => {
                 console.log(error);
@@ -40,7 +41,7 @@ const Register = () => {
                                     <input type='checkbox' required/>
                                     Accept Terms and Conditions
                                 </label>
-                                <button className="btn btn-neutral mt-4">Login</button>
+                                <button className="btn btn-neutral mt-4">Register</button>
                                 <p>Already have an account ? please <Link to={'/login'} className='text-blue-400 underline'>Login</Link></p>
                             </fieldset>
                         </form>
