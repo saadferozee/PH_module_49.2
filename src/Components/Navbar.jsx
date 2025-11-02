@@ -11,6 +11,12 @@ const Navbar = () => {
         <NavLink to={'/about'}>About</NavLink>
         <NavLink to={'/login'}>Login</NavLink>
         {/* <NavLink to={'/register'}>Register</NavLink> */}
+        {
+            user && <>
+                <NavLink to={'/orders'}>Orders</NavLink>
+                <NavLink to={'profile'}>Profile</NavLink>
+            </>
+        }
     </>
 
     const handleLogout = () => {
