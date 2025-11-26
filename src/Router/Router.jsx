@@ -7,6 +7,7 @@ import Register from "../Pages/Register"
 import PrivateRoute from "./PrivateRoute"
 import Orders from "../Pages/Orders"
 import Profile from "../Pages/Profile"
+import Error from "../Components/Error"
 
 
 const router = createBrowserRouter([
@@ -19,7 +20,8 @@ const router = createBrowserRouter([
             { path: '/login', Component: Login },
             { path: '/register', Component: Register },
             { path: '/orders', element: <PrivateRoute> <Orders></Orders> </PrivateRoute> },
-            { path: '/profile', element: <PrivateRoute> <Profile></Profile> </PrivateRoute> }
+            { path: '/profile', element: <PrivateRoute> <Profile></Profile> </PrivateRoute> },
+            { path: '/*', Component: Error }
         ]
     }
 ])
